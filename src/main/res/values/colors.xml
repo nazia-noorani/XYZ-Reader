@@ -25,7 +25,7 @@
     <color name="primary">#F44336</color>
     <color name="primaryDark">#D32F2F</color>
     <color name="colorAccent">#FFD740</color>
-    <color name="textHeadline">#000</color>
+    <color name="black">#000</color>
     <color name="transprent">#00000000</color>
     <color name="blue">#448AFF</color>
 

@@ -21,15 +21,18 @@
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
-    <style name="Theme.Bacon.Detail">
-        <item name="android:statusBarColor">@android:color/transparent</item>
-    </style>
+    <!--<style name="Theme.Bacon.Detail" parent="Theme.Bacon">-->
+        <!--&lt;!&ndash;<item name="android:statusBarColor">@android:color/transparent</item>&ndash;&gt;-->
+    <!--</style>-->
     <style name="ToolBarWithNavigationBack">
         <item name="navigationIcon">@drawable/ic_arrow_back</item>
     </style>
 
+    <style name="Theme.Bacon.Main" parent="Theme.Bacon">
+    </style>
 
     <style name="CollapsingToolbarLayoutExpandedTextStyle" parent="">
         <item name="android:textColor">@android:color/transparent</item>

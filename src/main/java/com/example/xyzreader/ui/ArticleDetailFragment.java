@@ -17,10 +17,14 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
+import android.transition.Slide;
+import android.transition.TransitionManager;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -96,10 +100,7 @@ public class ArticleDetailFragment extends Fragment implements
         mRootView = inflater.inflate(R.layout.fragment_article_details, container, false);
 
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            TextView title = (TextView)  mRootView.findViewById(R.id.article_title);
-            title.setTransitionName("HEAD" + String.valueOf(mItemId));
-        }
+
 
 
         mCollapsingToolbar = (CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_toolbar);
@@ -110,6 +111,10 @@ public class ArticleDetailFragment extends Fragment implements
 
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            mPhotoView.setTransitionName(getString(R.string.transition_name));
+        }
 
 
         mToolbar = (Toolbar) mRootView.findViewById(R.id.detail_toolbar);
@@ -165,7 +170,6 @@ public class ArticleDetailFragment extends Fragment implements
         TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
         bylineView.setMovementMethod(new LinkMovementMethod());
         TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
-//        bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
         titleView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "nevis.ttf"));
 
         final ProgressBar progressBar = (ProgressBar) mRootView.findViewById(R.id.progressImage);
@@ -208,9 +212,7 @@ public class ArticleDetailFragment extends Fragment implements
                             progressBar.setVisibility(View.GONE);
                         }
                     });
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                scheduleStartPostponedTransition(titleView);
-            }
+
         } else {
             mRootView.setVisibility(View.GONE);
             titleView.setText("N/A");
@@ -219,19 +221,7 @@ public class ArticleDetailFragment extends Fragment implements
         }
     }
 
-    private void scheduleStartPostponedTransition(final View sharedElement) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            sharedElement.getViewTreeObserver().addOnPreDrawListener(
-                    new ViewTreeObserver.OnPreDrawListener() {
-                        @Override
-                        public boolean onPreDraw() {
-                            sharedElement.getViewTreeObserver().removeOnPreDrawListener(this);
-                            getActivity().startPostponedEnterTransition();
-                            return true;
-                        }
-                    });
-        }
-    }
+
 
 
     @Override

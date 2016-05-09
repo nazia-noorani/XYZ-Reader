@@ -7,5 +7,9 @@
     <dimen name="fab_elevation">2dp</dimen>
     <dimen name="fab_press_translation_z">6dp</dimen>
     <dimen name="fab_margin">24dp</dimen>
+    <dimen name="text_size">20sp</dimen>
+    <dimen name="padding_about_text">25dp</dimen>
+    <dimen name="about_text_margin_top">35dp</dimen>
+
 
 </resources>
